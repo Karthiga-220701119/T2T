@@ -46,8 +46,8 @@ const HomePage = () => {
           <h2>Reduce. Reuse. Recycle. Repeat</h2>
           <p>We recycle plastic, metal, paper, glass, e-waste, and more to ensure a cleaner environment.</p>
           <div className="buttons">
-            <Link to="/buyer" className="buyer-btn">I Want to Buy</Link>
-            <Link to="/seller" className="seller-btn">I Want to Sell</Link>
+            <Link to="/login/buyer" className="buyer-btn">I Want to Buy</Link>
+            <Link to="/login/seller" className="seller-btn">I Want to Sell</Link>
           </div>
         </div>
       </section>
