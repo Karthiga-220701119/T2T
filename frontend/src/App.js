@@ -6,6 +6,8 @@ import BuyerLogin from './pages/BuyerLogin';
 import SellerLogin from './pages/SellerLogin';
 import BothLogin from './pages/BothLogin';
 import SignInPage from './pages/SignInPage';
+import IndustryDashboard from './pages/IndustryDashboard';
+import RecyclerDashboard from './pages/RecyclerDashboard';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/login/seller" element={<SellerLogin />} />
         <Route path="/login/both" element={<BothLogin />} />
         <Route path="/signin" element={<SignInPage />} />
+        <Route path="/dashboard/industry" element={<IndustryDashboard />} />
+        <Route path="/dashboard/recycler" element={<RecyclerDashboard />} />
       </Routes>
     </Router>
   );
