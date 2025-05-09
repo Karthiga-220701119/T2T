@@ -1,0 +1,62 @@
+
+.industry-dashboard {
+  padding: 30px;
+  background-color: #f2f2f2;
+  min-height: 100vh;
+}
+
+.waste-options {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.waste-options button {
+  margin: 5px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.waste-options button.selected {
+  background-color: #4caf50;
+  color: white;
+}
+
+.request-card {
+  background-color: #fff;
+  padding: 15px;
+  margin: 10px 0;
+  border-left: 5px solid #ccc;
+  border-radius: 5px;
+}
+
+.send-button {
+  background-color: #2196f3;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.status-badge {
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.status-pending {
+  color: orange;
+}
+
+.status-accepted {
+  color: green;
+}
+
+.status-rejected {
+  color: red;
+}

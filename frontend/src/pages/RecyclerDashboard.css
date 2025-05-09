@@ -1,0 +1,37 @@
+
+.recycler-dashboard {
+  padding: 30px;
+  background-color: #eef;
+  min-height: 100vh;
+}
+
+.request-card {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.request-actions {
+  margin-top: 10px;
+}
+
+.accept-button {
+  background-color: #4caf50;
+  color: white;
+  margin-right: 10px;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reject-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}

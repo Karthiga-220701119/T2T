@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./signin.css";
 
 const SignInPage = () => {
@@ -11,6 +13,14 @@ const SignInPage = () => {
     agree: false,
   });
 
+  const [role, setRole] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const selectedRole = localStorage.getItem("selectedRole");
+    if (selectedRole) setRole(selectedRole);
+  }, []);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -19,18 +29,29 @@ const SignInPage = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.agree) {
-      alert("Please agree to the terms & conditions.");
-      return;
+
+    if (!formData.agree) return alert("Please agree to the terms & conditions.");
+    if (formData.password !== formData.confirmPassword)
+      return alert("Passwords do not match.");
+
+    try {
+      const res = await axios.post("http://localhost:5000/api/register", {
+        ...formData,
+        role,
+      });
+
+      if (res.data.success) {
+        alert("Registered successfully!");
+        navigate("/login"); // redirect to login page
+      } else {
+        alert(res.data.message);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Registration failed.");
     }
-    if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match.");
-      return;
-    }
-    console.log("Registering:", formData);
-    // Perform registration logic
   };
 
   return (

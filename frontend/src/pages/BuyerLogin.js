@@ -1,26 +1,55 @@
-// src/pages/BuyerLogin.js
-import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate, Link } from 'react-router-dom';
 import "./LoginPage.css";
 
 const BuyerLogin = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    // You can later add actual authentication logic here
+    try {
+      const res = await axios.post('http://localhost:5000/api/login', {
+        email,
+        password,
+        role: 'buyer',
+      });
 
-    // Redirect to recycler dashboard
-    navigate("/dashboard/recycler");
+      if (res.data.success) {
+        alert("Login successful!");
+        localStorage.setItem("recyclerEmail", email);
+        window.open("/dashboard/recycler", "_blank");
+ // ✅ buyer-specific dashboard
+      } else {
+        alert(res.data.message);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Login failed.");
+    }
   };
 
   return (
     <div className="login-form-container">
       <h2>Buyer Login</h2>
       <form onSubmit={handleLogin}>
-        <input type="email" placeholder="Email" required />
-        <input type="password" placeholder="Password" required />
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          required
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          required
+        />
         <button type="submit">Login</button>
 
         <div className="login-options">
@@ -29,7 +58,7 @@ const BuyerLogin = () => {
 
         <div className="signup-section">
           <span>Don’t have an account? </span>
-          <Link to="/signin">Sign up</Link>
+          <Link to="/signin">Sign In</Link>
         </div>
       </form>
     </div>
